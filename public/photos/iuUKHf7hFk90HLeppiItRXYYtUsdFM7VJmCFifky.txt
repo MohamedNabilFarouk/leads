@@ -1,0 +1,86 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Jul 04, 2023 at 10:12 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `alef_generalhr`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clients`
+--
+
+CREATE TABLE `clients` (
+  `id` int NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `active` int NOT NULL DEFAULT '1',
+  `lat` double DEFAULT NULL,
+  `lng` double DEFAULT NULL,
+  `radius` double DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `nfc_id` varchar(255) DEFAULT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`id`, `name`, `slug`, `email`, `phone`, `password`, `active`, `lat`, `lng`, `radius`, `photo`, `nfc_id`, `email_verified_at`, `created_at`, `updated_at`) VALUES
+(14, 'PCF', 'PCF', 'pcf@gmail.com', '0123456787', '$2y$10$1IWF76J6LUGJW1YhPlBnWe8uNQYdPq/5eTnotUKkDBHYeHOWDKVbK', 1, NULL, NULL, NULL, NULL, NULL, NULL, '2023-05-29 14:43:00', '2023-06-15 17:32:37'),
+(15, 'Alef Software', 'alefsoftware', 'info@alefsoftware.com', '01100947777', '$2y$10$Rud2nlT7v8xLzkJjJAgTqupOlzYzIJnC9XF5Cu3Q3w.MXNqQF2ilK', 1, 30.064107125646842, 31.326551766950722, 30, NULL, NULL, '2023-06-08 12:27:27', '2023-06-05 10:26:21', '2023-06-21 13:09:38'),
+(26, 'Dar AlTaqwa', 'DarAlTaqwa', 'DaralTaqwa@gmail.com', '055554444', '$2y$10$f3Nqiy40JPDklfqFqkq6Re9NpKhACPqRSSxNtuJzQrayaotEI8hv.', 1, 24.471371623563247, 39.611919138091686, 100, 'photos/wN3SHDDziqZGqEEqTfZdZaDxtMEDBUTkhQBxI9of.png', NULL, NULL, '2023-06-14 18:09:37', '2023-06-21 09:02:39'),
+(27, 'asads', 'asdasd', 'asdsa@assasd.com', '123134', '$2y$10$0LTPQ5prR0itxPKF7h19YucS0006TX/tOrE7XRhFCEVT1FHxzZ0H6', 1, 32432, 123, 123, 'photos/EMTIIdJPUjm8BSCRtupTML738EF5rBlH1ybbmDot.jpg', NULL, NULL, '2023-06-21 09:03:48', '2023-06-21 10:37:18'),
+(28, 'asdas', 'asdasdeeee', 'admin@s.com', '123123112', '$2y$10$uznYjv5qJDcqHGqnnt/BjOnzjgF7enhM0AKRcQ8je5AAeUVZfRbTK', 1, 213, 312, 23, NULL, NULL, NULL, '2023-06-22 12:50:03', '2023-06-22 12:50:41');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `clients`
+--
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`),
+  ADD UNIQUE KEY `slug` (`slug`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `phone` (`phone`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

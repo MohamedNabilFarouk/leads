@@ -1,0 +1,45 @@
+version: '3.1'
+
+services:
+  db:
+    image: mariadb:10.4.11
+    restart: always
+    volumes:
+      - hrsmariadb:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Thd8zfcM7PqCU5DLQ4GSYpn
+      MYSQL_DATABASE: laravel
+  web:
+    image: webdevops/php-nginx:8.2
+#    build: .
+#    env_file: .env
+    restart: always
+    volumes:
+      - .:/app
+    environment:
+     - WEB_DOCUMENT_ROOT=/app/public
+     - PHP_MAX_EXECUTION_TIME=3000
+     - PHP_POST_MAX_SIZE=200M
+     - PHP_UPLOAD_MAX_FILESIZE=200M
+    ports:
+      - '32093:443'
+    depends_on:
+      - db
+  mongodb:
+    image: mongo
+    volumes:
+      - /mnt/hr_saas/mongo:/var/lib/mongo
+      - /mnt/hr_saas/externalVolumes/db:/data/db
+      - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh
+    ports:
+      - '32095:27017'
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+       - PMA_HOST=db
+       - UPLOAD_LIMIT=2000M
+    ports:
+      - 32091:80
+volumes:
+  hrsmariadb:

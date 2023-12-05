@@ -1,0 +1,136 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Jul 05, 2023 at 09:50 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `alef_generalhr`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint UNSIGNED NOT NULL,
+  `first_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `employee_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `birthday` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `religion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nationality` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `residence_number` bigint DEFAULT NULL,
+  `upload_proof` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `home_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `marital_status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `family_member` int DEFAULT NULL,
+  `relative` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contract_starting_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contract_expiration_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `starting_work_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `resident_leave_non_saudi` int DEFAULT NULL,
+  `work_card_expiry_date_non_Saudi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `department` int DEFAULT NULL,
+  `Job_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `basic_salary` int DEFAULT NULL,
+  `transport_allowance` int DEFAULT '0',
+  `housing_allowance` int DEFAULT '0',
+  `food_allowance` int DEFAULT '0',
+  `night_work_allowance` int DEFAULT NULL,
+  `gender` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reports_to` int DEFAULT NULL,
+  `passport_no` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `childern_no` int DEFAULT NULL,
+  `bank_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bank_account_no` bigint DEFAULT NULL,
+  `ifsc_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pan_no` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `first_contact_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `first_contact_relationship` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `first_contact_phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `second_contact_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `second_contact_relationship` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `second_contact_phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role_id` int NOT NULL DEFAULT '0',
+  `annual_leave` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `shift_from` time DEFAULT NULL,
+  `shift_to` time DEFAULT NULL,
+  `shift_duration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '8',
+  `lang` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `name`, `email`, `email_verified_at`, `employee_id`, `password`, `photo`, `birthday`, `religion`, `nationality`, `residence_number`, `upload_proof`, `phone_number`, `home_number`, `address`, `marital_status`, `family_member`, `relative`, `contract_starting_date`, `contract_expiration_date`, `starting_work_date`, `resident_leave_non_saudi`, `work_card_expiry_date_non_Saudi`, `department`, `Job_title`, `basic_salary`, `transport_allowance`, `housing_allowance`, `food_allowance`, `night_work_allowance`, `gender`, `state`, `country`, `reports_to`, `passport_no`, `childern_no`, `bank_name`, `bank_account_no`, `ifsc_code`, `pan_no`, `first_contact_name`, `first_contact_relationship`, `first_contact_phone`, `second_contact_name`, `second_contact_relationship`, `second_contact_phone`, `role_id`, `annual_leave`, `remember_token`, `created_at`, `updated_at`, `deleted_at`, `shift_from`, `shift_to`, `shift_duration`, `lang`, `company_name`, `customer_code`) VALUES
+(1, 'admin', 'admin', 'admin admin', 'admin@gmail.com', '2023-02-15 11:45:11', '1', '$2y$10$pS5HfU3M0qoB01z9WVbbLeRTl2pIa1J5YveHGl3.YcztWgENzD8l2', 'photos/1681040055google.png', '2022-12-08', 'Muslim', 'egyptian', 0, '0', '01285143289', NULL, 'Ahmed Hassan 123 El-Gomhoreya St. Bab El-Louk, Cairo Egypt', 'Married', 0, 'no', '2021-12-06', '0', '', 0, '0', 3, '1', 15000, 0, 0, 0, 0, 'Male', 'Cairo', '0', 1, '33', 4, 'CIB', 765559073213, 'SBIN0001069', 'SA89 3704 0044 0532 0130 00', 'Adam', 'Son', '01233449076', 'Hanen', 'Wife', '01233556576', 1, NULL, '0', '2022-12-12 08:03:02', '2023-06-21 07:57:18', NULL, '08:00:00', '16:00:00', '8', 'en', NULL, NULL),
+(80, 'غييث', 'حجازي', 'غييث حجازي', 'gaith.hijazi@gmail.com', NULL, '123', '$2y$10$pS5HfU3M0qoB01z9WVbbLeRTl2pIa1J5YveHGl3.YcztWgENzD8l2', 'photos/MLvDTAdMk9dOooh8IebxhdhHybcm3mO2EZf9FcZn.png', '1986-04-02', 'Muslim', 'Saudi Arabian', 12321332132, NULL, '54334332', '222003033', '١٤ محمد مندور ، شارع الطيران ', 'Married', 2, 'yes', '2022-04-01', '2024-04-01', '', 0, '2024-04-01', 4, '1', 10000, 500, 500, 1000, 700, 'Male', 'المدينه المنوره', 'السعوديه', 1, '1231233', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, '2023-04-04 15:41:42', '2023-05-29 14:20:00', '2023-05-29 14:20:00', '08:00:00', '17:00:00', '8', NULL, NULL, NULL),
+(81, 'Ahmed ', 'Sayed', 'Ahmed  Sayed', 'ahmed_sayed@gmail.com', NULL, '123456789', '$2y$10$cK1L0YcLb0Z.1rfN9pDSLeZEKWhRxQyjpD1hmU63kS10xGAwVP9kS', 'photos/aLyoSVCP26eynCbD2dg3XQ4kz6K2QW8VBXr9zGQZ.png', '2023-04-05', 'Muslim', 'Egyptian', 0, NULL, '123456789', '123456789', 'swez', 'Single', 0, NULL, '2023-04-05', '2023-04-05', NULL, 0, NULL, 3, '1', 5000, 0, 0, 0, 0, 'Male', 'cairo', 'egypt', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, '2023-04-05 14:02:57', '2023-05-29 14:20:03', '2023-05-29 14:20:03', '12:00:00', '12:00:00', '8', NULL, NULL, NULL),
+(84, 'Mahmoud', 'Maamoun', 'Mahmoud Maamoun', 'imaamouns@gmail.com', NULL, '444321', '$2y$10$pS5HfU3M0qoB01z9WVbbLeRTl2pIa1J5YveHGl3.YcztWgENzD8l2', 'photos/u8FGQJnLFPj2hVVkfr89eazNHrz7VslGxMRdCk79.webp', '1991-11-17', 'Muslim', 'Egyptian', 123098, 'files/LEVEReILqMDO7DfUEASQ51JimQUbhxavJpWCWU1G.jpg', '1100222233', '22332232', '14 Mohamed Mandour , El Tayyran , Nasr City', 'Married', 2, 'yes', '2023-01-01', '2024-01-01', NULL, 0, NULL, 6, '8', 12000, 0, 1200, 0, 100, 'Male', 'Cairo', 'Egypt', 1, '040349393', NULL, NULL, NULL, NULL, NULL, 'Mohamed', 'Brother', '0123455010', 'Mostafa', 'Brother', '0123453232', 1, NULL, NULL, '2023-04-16 13:38:01', '2023-05-29 14:19:36', '2023-05-29 14:19:36', '09:00:00', '18:00:00', '8', NULL, NULL, NULL),
+(85, 'Mohamed', 'Nabil', 'Mohamed Nabil', 'minaw77@gmail.com', NULL, '213', '$2y$10$myPa.wkzZvYzhEI4ehd8M.M6X8bFwzBC3JvM0xNsKAAjlsZvEJg4W', 'photos/Kp4eTQqkhsyEQVodYZR7iPddr9pMcw144kTQ61JW.jpg', '1991-04-24', 'Muslim', 'Egyptian', 1234212212121212121, NULL, '110002221', '3030302', 'ksmdasmda dsadsad dsad', 'Married', 2, 'yes', '2022-04-04', '2023-04-04', '2022-04-02', NULL, '2024-04-30', 2, '1', 12000, 1, 1, 1, 100, 'Male', 'Medina', 'saudia', 84, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, '12', '7cauvQK1X199ZtHTl2HORiU5dyedo2IPxfThP0eSBB0vaR1vFbMO5JYmFGp9', '2023-04-16 15:36:19', '2023-05-29 14:19:32', '2023-05-29 14:19:32', NULL, NULL, '8', NULL, NULL, NULL),
+(86, 'Ahmed', 'Mohamed', 'Ahmed Mohamed', 'am@gmail.com', NULL, '2232323', '$2y$10$FErcHEezhxUV6L8dZOOd6.NkVnpnwWOlhZhQFWnoEuDq..kf8FULu', 'photos/gxrWOcRvaweW44Tewi9soCskMAzVOxNZs27TV7dV.webp', '1996-02-02', 'Muslim', 'Egyptian', 1222121212, NULL, '11112222323', '22332323', '12 dskddsds dsdsds dsdsd xds', 'Married', 2, 'yes', '2021-04-01', '2023-08-03', '2021-04-05', NULL, '2023-04-09', 1, '1', 10000, 1, 1, 0, 200, 'Male', 'Alexandria', 'Egypt', 1, '1212223232223332', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, '12', NULL, '2023-04-16 16:24:51', '2023-05-29 14:19:29', '2023-05-29 14:19:29', NULL, NULL, '8', NULL, NULL, NULL),
+(87, 'محجوب', 'محجوب', 'محجوب محجوب', 'muh@muh.com', NULL, '10121', '$2y$10$OqFB8Dq2kXr5zNCLPAq6S.KuxghVtJF9I.fMAc7REtIvL0LyflVvG', NULL, '2023-04-01', 'Muslim', 'Cuban', 1021325465, NULL, '54655464', '0', 'hg', 'Married', 2, 'no', '2023-04-01', '2024-04-01', '2023-04-04', NULL, '2024-04-12', 13, '4', 6000, 0, 0, 0, 0, 'Male', 'hg', 'hg', 85, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, '31', NULL, '2023-04-30 13:34:12', '2023-05-29 14:19:25', '2023-05-29 14:19:25', NULL, NULL, '8', NULL, NULL, NULL),
+(89, 'Salem', 'Mohamed', 'Salem Mohamed', 'iman@gmail.com', NULL, NULL, '$2y$10$r/iWwBZ7ZvfWaraGokCbwOmrQMpRCY0tG//yKZpk2MD95HXko1NUm', NULL, NULL, NULL, NULL, NULL, NULL, '1101010101', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, '2023-05-03 12:25:45', '2023-05-29 14:19:21', '2023-05-29 14:19:21', NULL, NULL, '8', NULL, 'الواحه', '1231'),
+(91, 'Mahmoud', 'Maamoun', 'Mahmoud Maamoun', 'maamounsharaky@gmail.com', NULL, NULL, '$2y$10$fOgZ.CEKxXBp5J9P0n47W.noHrmTNmFUc3/DLvd.ljH6CEk5gCuIK', NULL, NULL, NULL, NULL, NULL, NULL, '10101010101', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, '2023-06-01 12:44:54', '2023-06-05 10:49:53', '2023-06-05 10:49:53', NULL, NULL, '8', NULL, NULL, NULL),
+(92, 'Mina', 'Wagdy', 'Mina Wagdy', 'mm@gmail.com', NULL, NULL, '$2y$10$Wn7sSbed07HERGQAvnmylO5fsQ2J4JjvKAyFQPS8khbPOeFN0Lvvy', NULL, NULL, NULL, NULL, NULL, NULL, '1291291212', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, '2023-06-01 12:45:49', '2023-06-01 12:45:49', NULL, NULL, NULL, '8', NULL, NULL, NULL),
+(93, 'Mahmoud', 'Maamoun', 'Mahmoud Maamoun', 'maamounsharaky@gmmail.com', NULL, NULL, '$2y$10$Bx.BlBKoLmEqVblx5EuUb.wM4LvyEvx60TJMabHcybJ0SxXE2Arta', NULL, NULL, NULL, NULL, NULL, NULL, '1100777759', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, '1', NULL, 0, 0, 0, NULL, NULL, NULL, NULL, 93, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, '2023-06-05 10:50:31', '2023-06-08 12:25:31', NULL, NULL, NULL, '8', NULL, NULL, NULL),
+(95, 'Alfarouk', 'Omar', 'Alfarouk Omar', 'elfarouk17@gmail.com', NULL, '23323', '$2y$10$pS5HfU3M0qoB01z9WVbbLeRTl2pIa1J5YveHGl3.YcztWgENzD8l2', NULL, '1992-06-17', 'Muslim', 'Egyptian', 1111111111, NULL, '1010101010', '202020203', '13 Elkhateeb st, assd ,assuit', 'Married', 3, 'yes', '2017-06-01', '2025-06-30', '2016-06-09', NULL, '2026-06-25', 3, '8', 12000, 200, 400, 3000, 0, 'Male', 'Sohag', 'Egypt', 84, '323', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '12', NULL, '2023-06-01 15:48:03', '2023-06-01 15:48:03', NULL, NULL, NULL, '8', NULL, NULL, NULL),
+(96, 'ef', 'rer', 'ef rer', 'er@m.m', NULL, '22', '$2y$10$vhgFoIi/F.5pKS.RX8Oz1uRFtUEpLy/YOc5kMWYMNeDdzZFlWygp.', NULL, '2023-06-08', 'Muslim', 'Azerbaijani', 22228888888, NULL, '2222', '0', '22', 'Single', 0, NULL, '2023-06-29', '2023-06-08', '2023-06-08', NULL, NULL, 2, '1', 222, 0, 0, 0, 0, 'Male', '22', '88', 93, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '222', NULL, '2023-06-08 14:01:10', '2023-06-08 14:01:10', NULL, NULL, NULL, '2', NULL, NULL, NULL);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
