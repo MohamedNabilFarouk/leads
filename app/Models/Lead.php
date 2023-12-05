@@ -9,7 +9,7 @@ class Lead extends Model
 {
     use HasFactory;
     protected $guard=[];
-protected $fillable =['name','email','phone','sales_id','project_id','marketer_id','created_by','channel','note','status','communication_way','cancel_reason'];
+protected $fillable =['name','email','phone','sales_id','project_id','marketer_id','created_by','channel','note','status','communication_way','cancel_reason','budget'];
 
 
     public function sales(){

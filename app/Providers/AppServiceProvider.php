@@ -22,20 +22,20 @@ class AppServiceProvider extends ServiceProvider
         $currenturl = request()->getHost();
 
         $tenantid=DB::connection('landlord')->table('tenants')->where('domain',$currenturl)->first();
-if($tenantid != null){
+// if($tenantid != null){
 
-        $mailConfig = DB::connection('general')->table('email_configs')->where('tenant_id',$tenantid->id)->first();
-        if ($mailConfig!=null) {
-            Config::set('mail.mailer', 'smtp');
-            Config::set('mail.host', $mailConfig->smtp_host);
-            Config::set('mail.port', $mailConfig->smtp_port);
-            Config::set('mail.username', $mailConfig->smtp_user);
-            Config::set('mail.password', $mailConfig->smtp_password);
-            Config::set('mail.encryption', $mailConfig->smtp_security);
-            Config::set('mail.from.address', $mailConfig->email_from_address);
-            Config::set('mail.from.name', $mailConfig->email_from_name);
-        }
-    }
+//         $mailConfig = DB::connection('general')->table('email_configs')->where('tenant_id',$tenantid->id)->first();
+//         if ($mailConfig!=null) {
+//             Config::set('mail.mailer', 'smtp');
+//             Config::set('mail.host', $mailConfig->smtp_host);
+//             Config::set('mail.port', $mailConfig->smtp_port);
+//             Config::set('mail.username', $mailConfig->smtp_user);
+//             Config::set('mail.password', $mailConfig->smtp_password);
+//             Config::set('mail.encryption', $mailConfig->smtp_security);
+//             Config::set('mail.from.address', $mailConfig->email_from_address);
+//             Config::set('mail.from.name', $mailConfig->email_from_name);
+//         }
+//     }
 }
 
     /**

@@ -80,6 +80,7 @@ class Kernel extends HttpKernel
         'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
         'session.token' => \App\Http\Middleware\VerifySessionToken::class,
+        'api.password' => \App\Http\Middleware\ApiPasswordAuthMiddleware::class,
 
     ];
 }
