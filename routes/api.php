@@ -13,6 +13,7 @@ use App\Http\Controllers\api\ChannelController;
 use App\Http\Controllers\api\RolesPermissionsController;
 use App\Http\Controllers\api\LeadStatusController;
 use App\Http\Controllers\api\ProjectController;
+use App\Http\Controllers\api\PropertyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +80,7 @@ Route::controller(LeadsController::class)->group(function () {
     Route::resource('leadStatus', LeadStatusController::class);
     Route::resource('lead', LeadsController::class);
     Route::resource('project', ProjectController::class);
+    Route::resource('property', PropertyController::class);
 
     Route::controller(RolesPermissionsController::class)->group(function () {
         Route::post('assignPermission', 'addPermissionToRole');
