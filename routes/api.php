@@ -25,7 +25,7 @@ use App\Http\Controllers\api\PropertyController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::middleware('api.password')->group(function () { //for auth to use api
 Route::controller(AttendanceApis::class)->group(function () {
     Route::post('checkin', 'checkin');
     Route::post('checkout', 'checkout');
@@ -82,7 +82,7 @@ Route::post('employeeSearch','UserController@employeeSearch');
 Route::controller(LeadsController::class)->group(function () {
     Route::get('getLeadClients/{slug}', 'getLeadClients');
     Route::post('leadLogin', 'leadLogin');
-    Route::get('leadsByStatus/{status}', 'getLeadsByStatus');
+    Route::get('leadsByStatus', 'getLeadsByStatus');
     Route::get('Leadsfilter','filter');
 });
 // Route::controller(RegionsController::class)->group(function () {
@@ -101,7 +101,7 @@ Route::controller(LeadsController::class)->group(function () {
     });
 
 
-// });
+}); //end api auth
 
 
 

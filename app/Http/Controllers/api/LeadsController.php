@@ -14,7 +14,7 @@ use Spatie\Multitenancy\Models\Tenant;
 use App\Traits\GeneralTrait;
 use App\Http\Resources\ClientResource;
 use App\Traits\CrudTrait;
-
+use Carbon\Carbon;
 use Validator;
 
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -79,17 +79,51 @@ class LeadsController extends Controller
                 if($request->status){
                     $query->where('status',$request->status);
                 }
-                if($this->search_from){
+                if($request->sales){
+                    $query->where('sales_id',$request->sales);
+                }
+                if($request->marketer){
+                    $query->where('marketer_id',$request->marketer);
+                }
+                if($request->project){
+                    $query->where('project_id',$request->project);
+                }
+                if($request->budget){
+                    $query->where('budget',$request->budget);
+                }
+                if($request->channel){
+                    $query->where('channel',$request->channel);
+                }
+                if($request->region){
+                    $query->whereHas('Project',function($q)use($request){
+                        $q->where('region',$request->region);
+                    });
+                }
+                if($request->communication_way){
+                    $query->where('communication_way','like','%'.$request->communication_way.'%');
+                }
+                if($request->cancel_reason){
+                    $query->where('cancel_reason','like','%'.$request->cancel_reason.'%');
+                    }
+                if($request->note){
+                    $query->where('note','like','%'.$request->note.'%');
+                }
+                if($request->created_from){
                     // dd($this->search_from);
-                    $query->whereBetween('created_at', [$this->search_from.' 00:00:00', $this->search_to.' 23:59:59']);
+                    $query->whereBetween('created_at', [$request->created_from, $request->created_to ?? Carbon::today()]);
+                }
+                if($request->action_date_from){
+                    // dd($this->search_from);
+                    $query->whereBetween('action_date', [$request->action_date_from, $request->action_date_to ?? Carbon::today()]);
                 }
 
 
             $data = $query->get();
+            return $this->generalResponse(200,$data);
             }
 
 // not used
-    public function getLeadsByStatus($status){
+    public function getLeadsByStatus(Request $request){
         // dd('here');
         // $statuses = [
         //     'New',
@@ -105,9 +139,11 @@ class LeadsController extends Controller
         // ];
 
         // $statuses = LeadStatus::all();
-
-        $data =Lead::where('status',$status)->orderBy('id','DESC')->get();
-
+if($request->has('status')){
+        $data =Lead::where('status',$request->status)->orderBy('id','DESC')->get();
+}else{
+    $data =Lead::orderBy('id','DESC')->get();
+}
 
 
         return $this->generalResponse(200,$data);
