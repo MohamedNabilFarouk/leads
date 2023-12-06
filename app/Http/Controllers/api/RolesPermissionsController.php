@@ -19,4 +19,5 @@ class RolesPermissionsController extends Controller
 
         return $this->generalResponse(200,'updated successfully');
     }
+
 }

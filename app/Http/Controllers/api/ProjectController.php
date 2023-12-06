@@ -13,6 +13,7 @@ use App\Http\Resources\ClientResource;
 use App\Traits\CrudTrait;
 use App\Traits\imagesTrait;
 use Validator;
+use JWTAuth;
 
 
 class ProjectController extends Controller
@@ -24,10 +25,12 @@ class ProjectController extends Controller
     public function __construct()
     {
         $this->getModel(Project::class);
+        // $this->middleware(['permission:project_read'])->only(['index']);
     }
     public function index()
     {
-
+        dd(auth()->user());
+        // dd(JWTAuth());
        $row = $this->getIndex();
         return $this->generalResponse(200,$row);
     }

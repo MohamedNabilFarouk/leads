@@ -25,14 +25,8 @@ use App\Http\Controllers\api\ProjectController;
 |
 */
 Route::middleware('api.password')->group(function () { //for auth to use api
-Route::controller(AttendanceApis::class)->group(function () {
-    Route::post('checkin', 'checkin');
-    Route::post('checkout', 'checkout');
-    Route::get('attendance', 'attendacePage');
-});
 
-Route::get('getEmployees', [APIController::class,'showEmployeeData']);
-Route::post('getEmployeeAttendance', [APIController::class,'showEmployeeAttendance']);
+
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('login', 'login');
@@ -65,12 +59,6 @@ Route::controller(LeavesController::class)->group(function () {
     Route::get('approveReplacement/{id}', 'approveReplacement');
 
 });
-Route::controller(LoanController::class)->group(function () {
-    Route::get('userLoan/{id}', 'getUserLoans');
-    Route::get('warrantorLoan/{id}', 'getWarrantorLoans');
-    Route::post('changeLoanStatus', 'changeStatus');
-    Route::post('addLoan', 'addLoan');
-});
 
 Route::group(['middleware' => ['auth:api'], 'namespace' => 'App\Http\Controllers\api'], function () {
 Route::get('getAllDesignations','UserController@getAllDesignations');
@@ -85,6 +73,7 @@ Route::controller(LeadsController::class)->group(function () {
     Route::get('Leadsfilter','filter');
 });
 // Route::controller(RegionsController::class)->group(function () {
+    // Route::group(['middleware' => ['auth:api']], function(){
     Route::resource('regions', RegionController::class);
     Route::resource('channel', ChannelController::class);
     Route::resource('leadStatus', LeadStatusController::class);
@@ -97,6 +86,7 @@ Route::controller(LeadsController::class)->group(function () {
         Route::post('leadLogin', 'leadLogin');
         // Route::get('leadsByStatus', 'getLeadsByStatus');
     });
+    // });
 
 
 }); //end api auth

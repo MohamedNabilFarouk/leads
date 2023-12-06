@@ -74,7 +74,7 @@ class AuthController extends Controller
             ]);
             $credentials = $request->only('email', 'password');
 
-            if ((!$token = auth('api')->attempt($credentials)) ) {
+            if ((!$token = auth()->guard('api')->attempt($credentials)) ) {
                 return response()->json(['response' => false, 'status' => 403, 'message' => 'Invalid Login'], 403);
             }
             $user = Auth::guard('api')->user();
@@ -218,6 +218,7 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         $user = Auth::guard('api')->user();
+
         return response()->json([
             'data'=>$user,
             'access_token' => $token,
