@@ -17,6 +17,10 @@ class ChannelController extends Controller
     public function __construct()
     {
         $this->getModel(Channel::class);
+        $this->middleware(['permission:channel_read'])->only(['index']);
+        $this->middleware(['permission:channel_create'])->only(['store']);
+        $this->middleware(['permission:channel_update'])->only(['update']);
+        $this->middleware(['permission:channel_delete'])->only(['destroy']);
     }
     public function index()
     {

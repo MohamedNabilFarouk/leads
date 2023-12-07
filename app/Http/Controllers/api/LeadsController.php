@@ -27,6 +27,10 @@ class LeadsController extends Controller
     public function __construct()
     {
         $this->getModel(Lead::class);
+        $this->middleware(['permission:lead_read'])->only(['filter','getLeadsByStatus']);
+        $this->middleware(['permission:lead_create'])->only(['store']);
+        $this->middleware(['permission:lead_update'])->only(['update']);
+        $this->middleware(['permission:lead_delete'])->only(['destroy']);
     }
 
     public function store(Request $request){
@@ -68,6 +72,7 @@ class LeadsController extends Controller
     }
 
             public function filter(Request $request){
+                // dd(Auth::guard('api')->user()->getPermissionNames());
                 $query = Lead::query();
 
                 if($request->name){
@@ -124,7 +129,7 @@ class LeadsController extends Controller
 
 // not used
     public function getLeadsByStatus(Request $request){
-        // dd('here');
+    //    dd(Auth::guard('api')->user()->getPermissionNames());
         // $statuses = [
         //     'New',
         //     'No Answer',

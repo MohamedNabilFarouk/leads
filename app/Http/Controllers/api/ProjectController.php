@@ -25,11 +25,14 @@ class ProjectController extends Controller
     public function __construct()
     {
         $this->getModel(Project::class);
-        // $this->middleware(['permission:project_read'])->only(['index']);
+        $this->middleware(['permission:project_read'])->only(['index']);
+        $this->middleware(['permission:project_create'])->only(['store']);
+        $this->middleware(['permission:project_update'])->only(['update']);
+        $this->middleware(['permission:project_delete'])->only(['destroy']);
     }
     public function index()
     {
-        dd(auth()->user());
+        // dd(Auth::guard('api')->user());
         // dd(JWTAuth());
        $row = $this->getIndex();
         return $this->generalResponse(200,$row);

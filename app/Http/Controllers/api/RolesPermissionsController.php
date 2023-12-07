@@ -17,6 +17,12 @@ class RolesPermissionsController extends Controller
         $permissions=json_decode($request->permission_id);
         $role->syncPermissions($permissions);
 
+
+
+// Sync the role's permissions with all users having that role
+    $role->users()->each(function ($user) use ($role) {
+    $user->syncPermissions($role->permissions);
+    });
         return $this->generalResponse(200,'updated successfully');
     }
 

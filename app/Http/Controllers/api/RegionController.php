@@ -18,6 +18,10 @@ class RegionController extends Controller
     {
 
         $this->getModel(Region::class);
+        $this->middleware(['permission:region_read'])->only(['index']);
+        $this->middleware(['permission:region_create'])->only(['store']);
+        $this->middleware(['permission:region_update'])->only(['update']);
+        $this->middleware(['permission:region_delete'])->only(['destroy']);
     }
     public function index()
     {

@@ -17,7 +17,7 @@ class ApiPasswordAuthMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $providedPassword = $request->header('Authorization');
+        $providedPassword = $request->header('apiAuthorization');
         $hashedPassword = Hash::make('admin123456789');
 
         if (password_verify($providedPassword, $hashedPassword)) {

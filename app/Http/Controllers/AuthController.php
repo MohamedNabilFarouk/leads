@@ -78,6 +78,7 @@ class AuthController extends Controller
                 return response()->json(['response' => false, 'status' => 403, 'message' => 'Invalid Login'], 403);
             }
             $user = Auth::guard('api')->user();
+            // dd($user);
             // dd($user->hasDirectPermission('leads-read'));
 
             // if($user->hasDirectPermission('leads-read')){

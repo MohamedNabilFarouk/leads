@@ -42,39 +42,22 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('performance','performance');
     Route::post('register', 'register');
 
-    Route::get('get_nfc', 'getNfcID');
-    Route::get('employee_performance/{id}', 'employeePerformance');
-    Route::get('employee_profile/{id}', 'employeeProfile');
     Route::get('getClient/{slug}', 'getClient'); // get saas client by slugs
 
 });
 
-Route::controller(LeavesController::class)->group(function () {
-    Route::get('listLeaveTypes', 'leaveTypes');
-    Route::get('myLeaves', 'myLeaves');
-    Route::get('listAllEmployees', 'employees');
-    Route::get('deleteLeave/{id}', 'deleteLeave');
-    Route::post('createLeave', 'createLeave');
-    Route::post('updateLeave/{id}', 'updateLeave');
-    Route::get('getLeave/{id}', 'getLeave');
-    Route::get('approveReplacement/{id}', 'approveReplacement');
-
-});
-
-Route::group(['middleware' => ['auth:api'], 'namespace' => 'App\Http\Controllers\api'], function () {
-Route::get('getAllDesignations','UserController@getAllDesignations');
-Route::post('employeeSearch','UserController@employeeSearch');
-});
 
 
-Route::controller(LeadsController::class)->group(function () {
-    Route::get('getLeadClients/{slug}', 'getLeadClients');
-    Route::post('leadLogin', 'leadLogin');
-    Route::get('leadsByStatus', 'getLeadsByStatus');
-    Route::get('Leadsfilter','filter');
-});
+
+    Route::group(['middleware' => ['auth:api']], function(){
+    Route::controller(LeadsController::class)->group(function () {
+        Route::get('getLeadClients/{slug}', 'getLeadClients');
+        Route::post('leadLogin', 'leadLogin');
+        Route::get('leadsByStatus', 'getLeadsByStatus');
+        Route::get('Leadsfilter','filter');
+    });
 // Route::controller(RegionsController::class)->group(function () {
-    // Route::group(['middleware' => ['auth:api']], function(){
+
     Route::resource('regions', RegionController::class);
     Route::resource('channel', ChannelController::class);
     Route::resource('leadStatus', LeadStatusController::class);
@@ -88,7 +71,7 @@ Route::controller(LeadsController::class)->group(function () {
         Route::post('leadLogin', 'leadLogin');
         // Route::get('leadsByStatus', 'getLeadsByStatus');
     });
-    // });
+    });
 
 
 }); //end api auth
