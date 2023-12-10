@@ -14,7 +14,7 @@ use App\Http\Resources\ClientResource;
 use App\Traits\CrudTrait;
 use App\Traits\imagesTrait;
 use Validator;
-
+use App\Models\PropertyGallery;
 class PropertyController extends Controller
 {
     use GeneralTrait;
@@ -50,6 +50,8 @@ class PropertyController extends Controller
 
         // dd(auth::guard('api')->user());
         $data= $request->all();
+       
+    
         if ($request -> has('pdf')) {
             $pdf = $this -> saveImages($request -> pdf, 'images/properties/pdf');
             $data['pdf'] = $pdf;
@@ -59,7 +61,18 @@ class PropertyController extends Controller
         if($validator->fails()){
             return response()->json(['error'=>$validator->errors()->toJson()], 400);
         }
-        $this->getStore($data);
+        $getId=$this->getStore($data);
+        
+        if($request->gallery!=''){
+        foreach($request->gallery as $g){
+            $gallery = new PropertyGallery();
+            $image = $this -> saveImages($g, 'images/properties/gallery');
+            $gallery->image = $image;
+            $gallery->property_id = $getId->id;
+            $gallery->save();
+        }
+    }
+
         return $this->generalResponse(200,'added successfully');
     }
 
@@ -86,5 +99,13 @@ class PropertyController extends Controller
             $this->getUpdate($data,$id);
         return $this->generalResponse(200,'updated successfully');
         }
+}
+
+public function destroy($id){
+    if($id){
+        $this->getDestroy($id);
+        return $this->generalResponse(200,'deleted successfully');
+    }
+    return $this->generalResponse(400,'There is no Region');
 }
 }
