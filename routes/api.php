@@ -14,6 +14,13 @@ use App\Http\Controllers\api\RolesPermissionsController;
 use App\Http\Controllers\api\LeadStatusController;
 use App\Http\Controllers\api\ProjectController;
 use App\Http\Controllers\api\PropertyController;
+use App\Http\Controllers\api\PropertyCategoryController;
+use App\Http\Controllers\api\PropertyUnitTypeController;
+use App\Http\Controllers\api\propertyViewController;
+use App\Http\Controllers\api\PropertyFinshingController;
+use App\Http\Controllers\api\PropertyDepartmentController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -92,6 +99,11 @@ Route::controller(LeadsController::class)->group(function () {
     Route::resource('lead', LeadsController::class);
     Route::resource('project', ProjectController::class);
     Route::resource('property', PropertyController::class);
+    Route::resource('propertyCategory', PropertyCategoryController::class);
+    Route::resource('propertyUnitType', propertyUnitTypeController::class);
+    Route::resource('propertyView', propertyViewController::class);
+    Route::resource('propertyFinishing', PropertyFinshingController::class);
+    Route::resource('propertyDepartment', PropertydepartmentController::class);
 
     Route::controller(RolesPermissionsController::class)->group(function () {
         Route::post('assignPermission', 'addPermissionToRole');
