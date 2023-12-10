@@ -197,7 +197,7 @@ return [
         // SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Laradevsbd\Zkteco\ZktecoServiceProvider::class,
-        App\Providers\TenancyServiceProvider::class, // <-- here
+
 
 
     ],
