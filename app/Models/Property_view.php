@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Property_view extends Model
 {
     use HasFactory;
+    protected $fillable=['title_en','title_ar'];
+
 }

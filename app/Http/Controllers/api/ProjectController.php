@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Project;
+use App\Models\ProjectImage;
+
 
 use App\Traits\GeneralTrait;
 use App\Http\Resources\ClientResource;
@@ -53,12 +55,23 @@ class ProjectController extends Controller
             $photo = $this -> saveImages($request -> photo, 'images/projects');
             $data['photo'] = $photo;
         }
-        $data['created_by'] =auth::guard('api')->user()->id ;
+        // $data['created_by'] =auth::guard('api')->user()->id ;
 
         if($validator->fails()){
             return response()->json(['error'=>$validator->errors()->toJson()], 400);
         }
         $this->getStore($data);
+
+        $getId=$this->getStore($data);
+        if($request->gallery!=''){
+            foreach($request->gallery as $g){
+                $gallery = new ProjectImage();
+                $image = $this -> saveImages($g, 'images/project/gallery');
+                $gallery->image = $image;
+                $gallery->project_id = $getId->id;
+                $gallery->save();
+            }
+        }
         return $this->generalResponse(200,'added successfully');
     }
 
