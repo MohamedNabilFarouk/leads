@@ -177,14 +177,7 @@
                                 @if(auth()->user()->can('employee-salary-read'))
                                     <li @if(Request::path() == app()->getLocale(). '/payroll') class="active" @endif><a href="{{url('payroll')}}"> {{__('Employee Salary')}} </a></li>
                                 @endif
-                                @if(auth()->user()->can('payslip-read'))
-                                        <?php
-                                        $payroll=DB::table('payrolls')->where('user_id',auth()->user()->id)->orderby('id','desc')->first();
-                                        ?>
-                                    @if($payroll !=NULL)
-                                        <li @if(strpos(Request::url(), 'payslip') !== false) class="active" @endif><a href="{{url('payslip')}}/{{\Crypt::encrypt($payroll->id)}}"> {{__('Payslip')}} </a></li>
-                                    @endif
-                                @endif
+
                                 @if(auth()->user()->can('payroll-items-read'))
                                     <li @if(Request::path() == app()->getLocale(). '/payrollItems') class="active" @endif><a href="{{url('payrollItems')}}"> {{__('Payroll Items')}} </a></li>
                                 @endif
@@ -216,16 +209,7 @@
                                 @if( auth()->user()->can('performance-appraisal-read'))
                                     <li @if(Request::path() == app()->getLocale(). '/appraisal') class="active" @endif ><a href="{{url('appraisal')}}"> {{__('Performance Appraisal')}} </a></li>
                                 @endif
-                                @if(auth()->user()->can('performance-(employee)-read'))
-                                        <?php
-                                        $performance=DB::table('user_performances')->where('user_id',auth()->user()->id)->count();
-                                        ?>
-                                    @if($performance!=0)
-                                        <li @if(Request::path() == app()->getLocale(). '/show-performance') class="active" @endif><a href="{{url('show-performance')}}/{{\Crypt::encrypt(auth()->user()->id)}}"> {{__('Performance')}} </a></li>
-                                    @endif
 
-
-                                @endif
                             </ul>
                         </li>
 
